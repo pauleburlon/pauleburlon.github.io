@@ -321,6 +321,27 @@ hr {
 }
 
 /* =========================================================
+   Reveal-on-scroll
+   Only applied when JS marks <html> with .reveal-ready, so
+   no-JS users see content immediately. Respects reduced motion.
+   ========================================================= */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal-ready main > h2,
+  .reveal-ready main .entry {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    will-change: opacity, transform;
+  }
+
+  .reveal-ready main > h2.is-visible,
+  .reveal-ready main .entry.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================================
    Small screens
    ========================================================= */
 @media (max-width: 640px) {
