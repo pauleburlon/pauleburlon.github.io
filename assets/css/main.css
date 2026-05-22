@@ -270,16 +270,21 @@ hr {
   margin-top: var(--space-3);
 }
 
-.intro .links a {
+.intro .links a,
+.intro .links button {
   display: inline-block;
   padding: 0.35rem 0.85rem;
   border: 1px solid var(--rule);
   border-radius: 999px;
   color: var(--text);
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
   transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
 }
 
-.intro .links a:hover {
+.intro .links a:hover,
+.intro .links button:hover {
   color: var(--accent);
   border-color: var(--accent);
   background: var(--bg-soft);
@@ -479,4 +484,102 @@ hr {
   h1 { font-size: 2rem; }
   .entry-head { flex-direction: column; gap: 0; }
   .entry-head .date { font-size: 0.85rem; }
+}
+
+/* =========================================================
+   Print / Save-as-PDF stylesheet
+   Strips UI chrome and forces a clean light layout on paper.
+   ========================================================= */
+@media print {
+  :root,
+  :root[data-theme="dark"],
+  :root[data-theme="light"] {
+    --bg: #ffffff;
+    --bg-soft: #f5f1e8;
+    --text: #1a1a1a;
+    --muted: #555;
+    --rule: #cccccc;
+    --accent: #7a3b2f;
+    --accent-soft: #b58579;
+  }
+
+  html { font-size: 11pt; }
+
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  /* Hide all interactive chrome */
+  .top-bar,
+  .side-nav,
+  .site-footer,
+  .no-print {
+    display: none !important;
+  }
+
+  /* Make sure reveal-on-scroll content is fully visible */
+  .reveal-ready main > h2,
+  .reveal-ready main .entry,
+  .reveal-ready main .research-thesis,
+  .reveal-ready main .skill-grid {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* Page-fitting layout */
+  .page {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .intro {
+    margin-bottom: 1rem;
+  }
+
+  .intro .name {
+    font-size: 1.7rem;
+    margin-bottom: 0.1rem;
+  }
+
+  .intro .tagline {
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .intro .bio {
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+  }
+
+  h2 {
+    font-size: 1.1rem;
+    margin-top: 1rem;
+    margin-bottom: 0.3rem;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  h3 { font-size: 0.85rem; }
+
+  /* Tighter entries, no animation, avoid page splits */
+  .entry,
+  .research-thesis,
+  .skill-group {
+    margin-bottom: 0.6rem;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .entry.current::before {
+    background: #7a3b2f;
+  }
+
+  /* Plain links — drop the underline border, keep text only */
+  a {
+    color: inherit;
+    border-bottom: none;
+    text-decoration: none;
+  }
 }

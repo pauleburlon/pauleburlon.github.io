@@ -27,7 +27,8 @@ lang: en
     <a href="mailto:pauleburlon@gmail.com">Email</a>
     <a href="https://www.linkedin.com/in/paul-burlon">LinkedIn</a>
     <a href="https://github.com/pauleburlon">GitHub</a>
-    <a href="{{ '/CV_Paul_Burlon_EN.pdf' | relative_url }}">CV (PDF)</a>
+    <a class="no-print" href="{{ '/CV_Paul_Burlon_EN.pdf' | relative_url }}">CV (PDF)</a>
+    <button class="no-print" type="button" onclick="window.print()">Save as PDF</button>
   </div>
 </section>
 
