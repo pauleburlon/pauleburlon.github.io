@@ -1,12 +1,21 @@
-# Paul Enno Burlon
+---
+title: Home
+---
 
-M.A. Sociology student at Ludwig-Maximilians-Universität München, focused on quantitative inequality research and computational social science.
+<section class="intro">
+  <h1 class="name">Paul Enno Burlon</h1>
+  <p class="tagline">M.A. Sociology · Ludwig-Maximilians-Universität München</p>
 
-## Contact
+  <p class="bio">
+    Researching quantitative inequality and computational social science.
+    Bachelor's thesis on refugee partnership preferences; prior work at
+    Otto, BIK Aschpurwis + Behrens, MZES, and GESIS.
+  </p>
 
-- Email: [pauleburlon@gmail.com](mailto:pauleburlon@gmail.com)
-- LinkedIn: [paul-burlon](https://www.linkedin.com/in/paul-burlon)
-
-## CV
-
-[View CV](cv) · [Download PDF](CV_Paul_Burlon_EN.pdf)
+  <div class="links">
+    <a href="mailto:pauleburlon@gmail.com">Email</a>
+    <a href="https://www.linkedin.com/in/paul-burlon">LinkedIn</a>
+    <a href="{{ '/cv' | relative_url }}">CV</a>
+    <a href="{{ '/CV_Paul_Burlon_EN.pdf' | relative_url }}">CV (PDF)</a>
+  </div>
+</section>

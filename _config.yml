@@ -1,3 +1,10 @@
-theme: jekyll-theme-minimal
 title: Paul Enno Burlon
 description: Sociology M.A. student — quantitative inequality research, computational social science
+author: Paul Enno Burlon
+lang: en
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
