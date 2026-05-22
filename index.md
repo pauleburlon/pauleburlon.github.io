@@ -1,6 +1,7 @@
 ---
 title: Home
 page_class: wide
+lang: en
 ---
 
 <section class="intro">

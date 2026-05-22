@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ site.lang | default: 'en' }}">
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,6 +12,15 @@
 </head>
 <body>
   <main class="page{% if page.page_class %} {{ page.page_class }}{% endif %}">
+    <nav class="lang-switch" aria-label="language switcher">
+      {% if page.lang == 'de' %}
+        <a href="{{ '/' | relative_url }}" lang="en" hreflang="en">EN</a>
+        <span aria-current="true" lang="de">DE</span>
+      {% else %}
+        <span aria-current="true" lang="en">EN</span>
+        <a href="{{ '/de/' | relative_url }}" lang="de" hreflang="de">DE</a>
+      {% endif %}
+    </nav>
     {{ content }}
   </main>
   <footer class="site-footer">
