@@ -1,9 +1,12 @@
-# Willkommen
+# Paul Enno Burlon
 
-Das ist meine GitHub Pages Website.
+M.A. Sociology student at Ludwig-Maximilians-Universität München, focused on quantitative inequality research and computational social science.
 
-# CV
+## Contact
 
-[View CV](cv)
+- Email: [pauleburlon@gmail.com](mailto:pauleburlon@gmail.com)
+- LinkedIn: [paul-burlon](https://www.linkedin.com/in/paul-burlon)
 
-[Download PDF](cv.pdf)
+## CV
+
+[View CV](cv) · [Download PDF](CV_Paul_Burlon_EN.pdf)
