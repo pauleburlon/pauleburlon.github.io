@@ -5,29 +5,51 @@ lang: de
 permalink: /de/
 ---
 
+<aside class="side-nav" aria-label="Abschnittsnavigation">
+  <a href="#forschung">Forschung</a>
+  <a href="#ausbildung">Ausbildung</a>
+  <a href="#berufserfahrung">Berufserfahrung</a>
+  <a href="#methoden">Methoden</a>
+  <a href="#kenntnisse">Kenntnisse</a>
+</aside>
+
 <section class="intro">
   <h1 class="name">Paul Enno Burlon</h1>
   <p class="tagline">M.A. Soziologie · Ludwig-Maximilians-Universität München</p>
 
   <p class="bio">
-    Forschung zu quantitativer Ungleichheit und Computational Social Science.
-    Bachelorarbeit zu Partnerwahl von Geflüchteten; bisherige Stationen bei
-    Otto, BIK Aschpurwis + Behrens, MZES und GESIS.
+    Bachelorarbeit zu Heiratsmustern unter Geflüchteten in Deutschland.
+    Vorherige Stationen: Otto, BIK, MZES und GESIS — Bereiche von People
+    Analytics über Marktforschung bis zu Migrationspanels und
+    Umfragemethodik. Neben der Forschung: Laufen, Rennradfahren und Klavier.
   </p>
 
   <div class="links">
     <a href="mailto:pauleburlon@gmail.com">E-Mail</a>
     <a href="https://www.linkedin.com/in/paul-burlon">LinkedIn</a>
+    <a href="https://github.com/pauleburlon">GitHub</a>
     <a href="{{ '/CV_Paul_Burlon_DE.pdf' | relative_url }}">Lebenslauf (PDF)</a>
   </div>
 </section>
 
+## Forschung
+
+<div class="research-thesis">
+  <p class="title">Status Maximization via Marriage: Refugees' Partnership Preferences</p>
+  <p class="meta">Bachelorarbeit · Universität Mannheim · 2025</p>
+  <p>
+    Untersucht, ob Geflüchtete in Deutschland Partnerpräferenzen zeigen, die
+    mit Status-Maximierungs-Strategien vereinbar sind — auf Basis von
+    Umfragedaten und multivariater Analyse von Stated-Preference-Szenarien.
+  </p>
+</div>
+
 ## Ausbildung
 
-<div class="entry">
+<div class="entry current">
   <div class="entry-head">
     <span class="place">Ludwig-Maximilians-Universität München</span>
-    <span class="date">Seit 10/2025</span>
+    <span class="date">10/2025 – heute</span>
   </div>
   <div class="role">M.A. Soziologie — München</div>
   <ul>
@@ -42,7 +64,6 @@ permalink: /de/
   </div>
   <div class="role">B.A. Soziologie, Nebenfach Angewandte Informatik (Note 1,7) — Mannheim</div>
   <ul>
-    <li>Bachelorarbeit: „Status Maximization via Marriage: Refugees' Partnership Preferences"</li>
     <li>Interdisziplinäres Programm mit Schwerpunkt auf empirischer Forschung, Data Science und quantitativer Analyse</li>
   </ul>
 </div>
@@ -62,7 +83,7 @@ permalink: /de/
 <div class="entry">
   <div class="entry-head">
     <span class="place">Marion Dönhoff Gymnasium Hamburg</span>
-    <span class="date">Abschluss 2020</span>
+    <span class="date">2020</span>
   </div>
   <div class="role">Abitur (Note 1,9) — Hamburg</div>
   <ul>
@@ -79,8 +100,7 @@ permalink: /de/
   </div>
   <div class="role">Praktikum im Bereich People Development — Hamburg</div>
   <ul>
-    <li>Unterstützung bei Entwicklungsprogrammen für Führungskräfte</li>
-    <li>Datengestützte Evaluation von Leadership-Development-Programmen</li>
+    <li>Konzeption und datenbasierte Evaluation von Leadership-Development-Programmen für Führungskräfte</li>
     <li>Mitarbeit am Neuaufbau der unternehmensweiten Stellenarchitektur</li>
   </ul>
 </div>
@@ -93,8 +113,7 @@ permalink: /de/
   <div class="role">Praktikum in der Marktforschung — Hamburg</div>
   <ul>
     <li>Deskriptive und multivariate Analysen zur Identifikation von Erfolgsfaktoren in Unternehmenskooperationen (Dissertation)</li>
-    <li>Erstellung von Datenvisualisierungen und analytischen Berichten</li>
-    <li>Marktforschung mit R und SPSS</li>
+    <li>Datenvisualisierungen und analytische Berichte in R und SPSS</li>
   </ul>
 </div>
 
@@ -103,7 +122,7 @@ permalink: /de/
     <span class="place">Mannheimer Zentrum für Europäische Sozialforschung (MZES)</span>
     <span class="date">09/2023 – 01/2025</span>
   </div>
-  <div class="role">Studentische Hilfskraft, PARFORM (Remote) — Mannheim</div>
+  <div class="role">Studentische Hilfskraft, PARFORM — Mannheim (remote)</div>
   <ul>
     <li>Mitarbeit an einer EU-geförderten Panelstudie zu Migration und sozialer Integration</li>
     <li>Literaturrecherche und Datenaufbereitung in R und Stata</li>
@@ -129,27 +148,33 @@ permalink: /de/
     <span class="place">L'Arche en Pays Toulousain</span>
     <span class="date">10/2020 – 08/2021</span>
   </div>
-  <div class="role">Freiwilligendienst, Sozialer Dienst mit EIRENE — Toulouse, Frankreich</div>
+  <div class="role">Freiwilligendienst, EIRENE — Toulouse, Frankreich</div>
   <ul>
     <li>Begleitung von 13 Menschen mit Behinderung im Team — Unterstützung beim Erreichen persönlicher Ziele</li>
   </ul>
 </div>
 
-## Soziologische Schwerpunkte
+## Methoden
 
-<div class="entry">
-  <div class="entry-head"><span class="place">Migration &amp; Integration</span></div>
-  <p>Bachelorarbeit zu Heiratsmustern und Erfolgsquoten von Geflüchteten; Mitarbeit am MZES im Bereich Migration.</p>
-</div>
-
-<div class="entry">
-  <div class="entry-head"><span class="place">Netzwerke</span></div>
-  <p>Kurse an der SMU zu Netzwerkanalyse in Soziologie und Informatik.</p>
-</div>
+- Regressions- und multivariate Analyse
+- Panel-Datenanalyse
+- Fragebogen- und Umfragemethodik
+- Netzwerkanalyse
+- Datenaufbereitung und Pipeline-Bau (R, Stata)
 
 ## Kenntnisse
 
-- **Sprachen** — Deutsch (Muttersprache), Englisch (fließend, TOEFL 109), Französisch (Mittelstufe), Niederländisch (Grundkenntnisse)
-- **Programmierung** — R, Python, Java, SQL
-- **Datenanalyse & Forschungstools** — Stata, Excel, SPSS, Unipark
-- **Interessen** — Laufen, Rennradfahren, Feldhockey, Volleyball, Lesen, Klavier
+<div class="skill-grid">
+  <div class="skill-group">
+    <h3>Programmierung</h3>
+    <p>R · Python · Java · SQL</p>
+  </div>
+  <div class="skill-group">
+    <h3>Statistik &amp; Datentools</h3>
+    <p>Stata · SPSS · Excel · Unipark</p>
+  </div>
+  <div class="skill-group">
+    <h3>Sprachen</h3>
+    <p>Deutsch (Muttersprache) · Englisch (fließend, TOEFL 109) · Französisch (Mittelstufe) · Niederländisch (Grundkenntnisse)</p>
+  </div>
+</div>
