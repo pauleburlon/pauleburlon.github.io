@@ -25,7 +25,7 @@ permalink: /de/
   </p>
 
   <div class="links">
-    <a href="mailto:pauleburlon@gmail.com">E-Mail</a>
+    <a href="mailto:pauleburlon@gmail.com"><span class="screen-only">E-Mail</span><span class="print-only">pauleburlon@gmail.com</span></a>
     <a href="https://www.linkedin.com/in/paul-burlon">LinkedIn</a>
     <a href="https://github.com/pauleburlon">GitHub</a>
     <a class="no-print" href="{{ '/CV_Paul_Burlon_DE.pdf' | relative_url }}">Lebenslauf (PDF)</a>

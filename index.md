@@ -24,7 +24,7 @@ lang: en
   </p>
 
   <div class="links">
-    <a href="mailto:pauleburlon@gmail.com">Email</a>
+    <a href="mailto:pauleburlon@gmail.com"><span class="screen-only">Email</span><span class="print-only">pauleburlon@gmail.com</span></a>
     <a href="https://www.linkedin.com/in/paul-burlon">LinkedIn</a>
     <a href="https://github.com/pauleburlon">GitHub</a>
     <a class="no-print" href="{{ '/CV_Paul_Burlon_EN.pdf' | relative_url }}">CV (PDF)</a>

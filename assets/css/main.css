@@ -488,37 +488,51 @@ hr {
 
 /* =========================================================
    Print / Save-as-PDF stylesheet
-   Strips UI chrome and forces a clean light layout on paper.
+   Classic 1-page CV: centered header, ALL-CAPS section rules,
+   place/date split, tight bullets. Forces light on paper.
    ========================================================= */
+
+/* Visibility utilities used by hero contact line */
+.print-only { display: none; }
+.screen-only { display: inline; }
+
 @media print {
+  @page {
+    size: A4;
+    margin: 1.4cm 1.5cm;
+  }
+
   :root,
   :root[data-theme="dark"],
   :root[data-theme="light"] {
-    --bg: #ffffff;
-    --bg-soft: #f5f1e8;
-    --text: #1a1a1a;
-    --muted: #555;
-    --rule: #cccccc;
-    --accent: #7a3b2f;
-    --accent-soft: #b58579;
+    --bg: #fff;
+    --text: #000;
+    --muted: #333;
+    --rule: #000;
+    --accent: #000;
   }
 
-  html { font-size: 11pt; }
-
+  html { font-size: 9.5pt; }
   body {
     background: #fff;
     color: #000;
+    line-height: 1.3;
   }
+
+  .print-only { display: inline; }
+  .screen-only { display: none; }
 
   /* Hide all interactive chrome */
   .top-bar,
   .side-nav,
   .site-footer,
-  .no-print {
+  .no-print,
+  .intro .tagline,
+  .intro .bio {
     display: none !important;
   }
 
-  /* Make sure reveal-on-scroll content is fully visible */
+  /* Override reveal-on-scroll so all content is visible */
   .reveal-ready main > h2,
   .reveal-ready main .entry,
   .reveal-ready main .research-thesis,
@@ -527,56 +541,185 @@ hr {
     transform: none !important;
   }
 
-  /* Page-fitting layout */
   .page {
     max-width: 100%;
     margin: 0;
     padding: 0;
   }
 
+  /* Header: centered name + contact line */
   .intro {
-    margin-bottom: 1rem;
+    text-align: center;
+    margin: 0 0 0.5rem;
   }
 
   .intro .name {
-    font-size: 1.7rem;
-    margin-bottom: 0.1rem;
+    font-size: 19pt;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    margin: 0 0 0.15rem;
   }
 
-  .intro .tagline {
-    font-size: 1rem;
-    margin-bottom: 0.4rem;
+  .intro .links {
+    display: block;
+    margin: 0;
+    font-size: 9.5pt;
   }
 
-  .intro .bio {
-    font-size: 1rem;
-    margin-bottom: 0.4rem;
+  .intro .links a {
+    display: inline;
+    padding: 0;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    background: none;
+    color: #000;
   }
 
+  .intro .links a + a::before {
+    content: " | ";
+    color: #000;
+  }
+
+  /* Section headings: bold, slightly enlarged, full-width rule */
   h2 {
-    font-size: 1.1rem;
-    margin-top: 1rem;
-    margin-bottom: 0.3rem;
+    font-size: 12.5pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin: 0.55rem 0 0.2rem;
+    padding-bottom: 0.05rem;
+    border-bottom: 1px solid #000;
     page-break-after: avoid;
     break-after: avoid;
+    color: #000;
   }
 
-  h3 { font-size: 0.85rem; }
-
-  /* Tighter entries, no animation, avoid page splits */
-  .entry,
-  .research-thesis,
-  .skill-group {
-    margin-bottom: 0.6rem;
+  /* Entries: place left bold, date right; role italic; tight bullets */
+  .entry {
+    margin: 0 0 0.35rem;
+    padding-left: 0;
     page-break-inside: avoid;
     break-inside: avoid;
   }
 
-  .entry.current::before {
-    background: #7a3b2f;
+  .entry.current { padding-left: 0; }
+  .entry.current::before { display: none; }
+
+  .entry-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin: 0;
+    gap: 0.5em;
   }
 
-  /* Plain links — drop the underline border, keep text only */
+  .entry-head .place {
+    font-weight: 700;
+    font-size: 10pt;
+  }
+
+  .entry-head .date {
+    font-style: normal;
+    color: #000;
+    font-size: 9.5pt;
+    white-space: nowrap;
+  }
+
+  .entry .role {
+    font-style: italic;
+    color: #000;
+    font-size: 9.5pt;
+    margin: 0;
+  }
+
+  .entry ul {
+    margin: 0.05rem 0 0;
+    padding-left: 1.1em;
+  }
+
+  .entry li {
+    margin: 0;
+    font-size: 9.5pt;
+  }
+
+  /* Research thesis: tight inline-style block, no left bar */
+  .research-thesis {
+    border-left: none;
+    padding-left: 0;
+    margin: 0 0 0.35rem;
+    page-break-inside: avoid;
+  }
+
+  .research-thesis .title {
+    font-style: italic;
+    font-weight: 600;
+    font-size: 10pt;
+    margin: 0;
+  }
+
+  .research-thesis .meta {
+    font-size: 9pt;
+    margin: 0;
+    color: #333;
+  }
+
+  .research-thesis p:last-child {
+    font-size: 9.5pt;
+    margin: 0.05rem 0 0;
+  }
+
+  /* Methods: flatten the top-level <ul> into an inline · separated line */
+  main > ul {
+    list-style: none;
+    margin: 0.1rem 0 0;
+    padding: 0;
+    font-size: 9.5pt;
+  }
+
+  main > ul li {
+    display: inline;
+  }
+
+  main > ul li + li::before {
+    content: " · ";
+    color: #555;
+  }
+
+  /* Skills: flatten grid to labeled inline lines */
+  .skill-grid {
+    display: block;
+    margin: 0.1rem 0 0;
+  }
+
+  .skill-group {
+    margin: 0 0 0.1rem;
+    page-break-inside: avoid;
+  }
+
+  .skill-group h3 {
+    display: inline;
+    font-size: 9.5pt;
+    font-weight: 700;
+    text-transform: none;
+    letter-spacing: 0;
+    color: #000;
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+
+  .skill-group h3::after {
+    content: ": ";
+    font-weight: 700;
+  }
+
+  .skill-group p {
+    display: inline;
+    font-size: 9.5pt;
+  }
+
+  /* Strip link decoration on paper */
   a {
     color: inherit;
     border-bottom: none;
