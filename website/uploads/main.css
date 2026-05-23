@@ -125,20 +125,6 @@ h2 {
   color: var(--text);
 }
 
-/* Section numbering: 01, 02, 03 ... before each top-level h2. */
-.page { counter-reset: section; }
-main > h2 { counter-increment: section; }
-main > h2::before {
-  content: counter(section, decimal-leading-zero);
-  display: inline-block;
-  font-size: 0.6em;
-  font-weight: 400;
-  color: var(--muted);
-  letter-spacing: 0.08em;
-  margin-right: 0.7em;
-  vertical-align: 0.25em;
-}
-
 h3 {
   font-size: 1.1rem;
   font-weight: 600;
@@ -372,42 +358,6 @@ hr {
 }
 
 /* =========================================================
-   CV grid (2 columns: Education | Experience on wide screens)
-   ========================================================= */
-.cv-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-4);
-  margin-top: var(--space-2);
-}
-
-@media (max-width: 760px) {
-  .cv-grid { grid-template-columns: 1fr; gap: var(--space-3); }
-}
-
-.col-head {
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--muted);
-  font-weight: 600;
-  margin: 0 0 var(--space-2);
-  padding: 0;
-  border-bottom: none;
-}
-
-.sub-head {
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--muted);
-  font-weight: 600;
-  margin: var(--space-3) 0 0.3rem;
-  padding: 0;
-  border-bottom: none;
-}
-
-/* =========================================================
    Research / featured thesis
    ========================================================= */
 .research-thesis {
@@ -416,41 +366,21 @@ hr {
   margin-bottom: var(--space-3);
 }
 
-.research-thesis .meta {
-  color: var(--muted);
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin: 0 0 0.3rem;
-}
-
 .research-thesis .title {
   font-style: italic;
   font-weight: 500;
-  font-size: 1.25rem;
-  line-height: 1.25;
-  margin: 0 0 var(--space-2);
+  font-size: 1.1rem;
+  margin: 0 0 0.2rem;
 }
 
-.research-thesis p:not(.title):not(.meta) {
-  margin: 0 0 var(--space-2);
-}
-
-.keywords {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  margin-top: var(--space-2);
-}
-
-.kw {
-  display: inline-block;
-  font-size: 0.78rem;
-  padding: 0.15rem 0.55rem;
-  background: var(--bg-soft);
+.research-thesis .meta {
   color: var(--muted);
-  border-radius: 3px;
-  font-style: italic;
+  font-size: 0.9rem;
+  margin: 0 0 var(--space-1);
+}
+
+.research-thesis p:last-child {
+  margin-bottom: 0;
 }
 
 /* =========================================================
@@ -463,13 +393,13 @@ hr {
   margin-top: var(--space-2);
 }
 
-.skill-group > h3:first-child {
+.skill-group h3 {
   font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--muted);
   font-weight: 600;
-  margin: 0 0 0.4rem;
+  margin: 0 0 0.3rem;
   padding: 0;
   border-bottom: none;
 }
@@ -477,94 +407,6 @@ hr {
 .skill-group p {
   margin: 0;
   line-height: 1.5;
-}
-
-/* Plain bullet list (used for Methods) */
-.plain-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.plain-list li {
-  padding: 0.15rem 0;
-  font-size: 0.95rem;
-  border-bottom: 1px dotted var(--rule);
-}
-
-.plain-list li:last-child { border-bottom: none; }
-
-/* Tag pills (programming / tools) */
-.tag-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  margin: 0;
-}
-
-.tag {
-  display: inline-block;
-  font-size: 0.85rem;
-  padding: 0.2rem 0.65rem;
-  background: var(--bg-soft);
-  border-radius: 4px;
-  font-family: "JetBrains Mono", "SF Mono", Menlo, monospace;
-  font-feature-settings: "kern", "liga";
-  letter-spacing: -0.01em;
-}
-
-/* Language progress bars */
-.lang-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.lang-list li {
-  margin-bottom: 0.7rem;
-}
-
-.lang-list li:last-child { margin-bottom: 0; }
-
-.lang-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 0.5rem;
-  font-size: 0.9rem;
-}
-
-.lang-name { font-weight: 500; }
-
-.lang-level {
-  color: var(--muted);
-  font-style: italic;
-  font-size: 0.8rem;
-}
-
-.lang-bar {
-  height: 2px;
-  background: var(--bg-soft);
-  margin-top: 0.3rem;
-  border-radius: 1px;
-  overflow: hidden;
-}
-
-.lang-fill {
-  height: 100%;
-  background: var(--accent);
-  border-radius: 1px;
-}
-
-/* =========================================================
-   Outside Research
-   ========================================================= */
-.outside {
-  font-style: italic;
-  color: var(--muted);
-  font-size: 1.05rem;
-  max-width: 32rem;
-  margin-top: var(--space-2);
 }
 
 /* =========================================================
@@ -614,10 +456,9 @@ hr {
    ========================================================= */
 @media (prefers-reduced-motion: no-preference) {
   .reveal-ready main > h2,
-  .reveal-ready main > .cv-grid,
-  .reveal-ready main > .research-thesis,
-  .reveal-ready main > .skill-grid,
-  .reveal-ready main > .outside {
+  .reveal-ready main .entry,
+  .reveal-ready main .research-thesis,
+  .reveal-ready main .skill-grid {
     opacity: 0;
     transform: translateY(10px);
     transition: opacity 0.6s ease, transform 0.6s ease;
@@ -625,10 +466,9 @@ hr {
   }
 
   .reveal-ready main > h2.is-visible,
-  .reveal-ready main > .cv-grid.is-visible,
-  .reveal-ready main > .research-thesis.is-visible,
-  .reveal-ready main > .skill-grid.is-visible,
-  .reveal-ready main > .outside.is-visible {
+  .reveal-ready main .entry.is-visible,
+  .reveal-ready main .research-thesis.is-visible,
+  .reveal-ready main .skill-grid.is-visible {
     opacity: 1;
     transform: translateY(0);
   }
@@ -692,19 +532,11 @@ hr {
     display: none !important;
   }
 
-  /* Hide section numbering on paper */
-  main > h2::before { display: none !important; }
-
-  /* Hide the Curriculum h2 — Education/Experience subheadings replace it */
-  main > h2#curriculum,
-  main > h2#lebenslauf { display: none !important; }
-
   /* Override reveal-on-scroll so all content is visible */
   .reveal-ready main > h2,
-  .reveal-ready main > .cv-grid,
-  .reveal-ready main > .research-thesis,
-  .reveal-ready main > .skill-grid,
-  .reveal-ready main > .outside {
+  .reveal-ready main .entry,
+  .reveal-ready main .research-thesis,
+  .reveal-ready main .skill-grid {
     opacity: 1 !important;
     transform: none !important;
   }
@@ -811,31 +643,6 @@ hr {
     font-size: 9.5pt;
   }
 
-  /* CV grid: collapse to single column in print */
-  .cv-grid {
-    display: block;
-    margin: 0;
-    gap: 0;
-  }
-
-  .cv-col {
-    margin-bottom: 0.4rem;
-  }
-
-  /* Column heads (Education/Experience) become section headings */
-  .col-head {
-    font-size: 12.5pt;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-    margin: 0.55rem 0 0.2rem;
-    padding-bottom: 0.05rem;
-    border-bottom: 1px solid #000;
-    color: #000;
-    page-break-after: avoid;
-    break-after: avoid;
-  }
-
   /* Research thesis: tight inline-style block, no left bar */
   .research-thesis {
     border-left: none;
@@ -844,146 +651,53 @@ hr {
     page-break-inside: avoid;
   }
 
+  .research-thesis .title {
+    font-style: italic;
+    font-weight: 600;
+    font-size: 10pt;
+    margin: 0;
+  }
+
   .research-thesis .meta {
     font-size: 9pt;
-    text-transform: none;
-    letter-spacing: 0;
     margin: 0;
     color: #333;
   }
 
-  .research-thesis .title {
-    font-style: italic;
-    font-weight: 600;
-    font-size: 10.5pt;
-    margin: 0;
-  }
-
-  .research-thesis p:not(.title):not(.meta) {
+  .research-thesis p:last-child {
     font-size: 9.5pt;
     margin: 0.05rem 0 0;
   }
 
-  /* Keywords flatten to comma-separated muted text */
-  .keywords {
-    display: block;
-    margin: 0.1rem 0 0;
-  }
-  .kw {
-    display: inline;
-    background: none;
-    padding: 0;
-    border-radius: 0;
-    font-size: 9pt;
-    font-style: italic;
-    color: #333;
-  }
-  .kw + .kw::before {
-    content: " · ";
-    color: #333;
-    font-style: normal;
-  }
-
-  /* Plain-list (Methods): flatten to inline · separated text */
-  .plain-list {
+  /* Methods: flatten the top-level <ul> into an inline · separated line */
+  main > ul {
     list-style: none;
     margin: 0.1rem 0 0;
     padding: 0;
     font-size: 9.5pt;
   }
-  .plain-list li {
+
+  main > ul li {
     display: inline;
-    padding: 0;
-    border: none;
   }
-  .plain-list li + li::before {
+
+  main > ul li + li::before {
     content: " · ";
     color: #555;
   }
 
-  /* Tags collapse to inline · separated text */
-  .tag-row {
-    display: inline;
-  }
-  .tag {
-    display: inline;
-    background: none;
-    padding: 0;
-    border-radius: 0;
-    font-family: var(--serif);
-    font-size: 9.5pt;
-  }
-  .tag + .tag::before {
-    content: " · ";
-    color: #555;
-  }
-
-  /* Language list: flatten to "Name (level)" inline */
-  .lang-list {
-    list-style: none;
-    margin: 0.1rem 0 0;
-    padding: 0;
-    font-size: 9.5pt;
-  }
-  .lang-list li {
-    display: inline;
-    margin: 0;
-  }
-  .lang-list li + li::before {
-    content: " · ";
-    color: #555;
-  }
-  .lang-row {
-    display: inline;
-    gap: 0;
-  }
-  .lang-name { font-weight: 700; }
-  .lang-level::before { content: " ("; }
-  .lang-level::after { content: ")"; }
-  .lang-level {
-    font-style: normal;
-    color: #333;
-    font-size: 9.5pt;
-  }
-  .lang-bar { display: none; }
-
-  /* Sub-head (Statistical tools) inline-labeled */
-  .sub-head {
-    display: inline;
-    font-size: 9.5pt;
-    font-weight: 700;
-    text-transform: none;
-    letter-spacing: 0;
-    color: #000;
-    margin: 0 0 0 0.6em;
-    padding: 0;
-    border: none;
-  }
-  .sub-head::before { content: " · "; font-weight: 400; color: #555; }
-  .sub-head::after { content: ": "; }
-
-  /* Outside: tight italic line */
-  .outside {
-    font-style: italic;
-    font-size: 9.5pt;
-    color: #000;
-    max-width: 100%;
-    margin: 0.1rem 0 0;
-  }
-
-  /* Skills: flatten 3-col grid to stacked labeled lines */
+  /* Skills: flatten grid to labeled inline lines */
   .skill-grid {
     display: block;
     margin: 0.1rem 0 0;
   }
 
   .skill-group {
-    display: block;
-    margin: 0 0 0.15rem;
+    margin: 0 0 0.1rem;
     page-break-inside: avoid;
   }
 
-  .skill-group > h3:first-child {
+  .skill-group h3 {
     display: inline;
     font-size: 9.5pt;
     font-weight: 700;
@@ -995,7 +709,7 @@ hr {
     border: none;
   }
 
-  .skill-group > h3:first-child::after {
+  .skill-group h3::after {
     content: ": ";
     font-weight: 700;
   }
