@@ -3,8 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% if page.title %}{{ page.title }} — {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
-  <meta name="description" content="{{ page.description | default: site.description }}">
+  {% seo %}
   <script>
     // Set theme + enable reveal animations before paint to avoid flash
     (function () {
@@ -67,7 +66,7 @@
     // Reveal-on-scroll: fade in section headings and content blocks
     (function () {
       var targets = document.querySelectorAll(
-        'main > h2, main > .cv-grid, main > .research-thesis, main > .skill-grid, main > .outside'
+        'main > h2, main > .cv-grid, main > .research-thesis, main > .skill-grid'
       );
       if (!targets.length) return;
 

@@ -557,17 +557,6 @@ hr {
 }
 
 /* =========================================================
-   Outside Research
-   ========================================================= */
-.outside {
-  font-style: italic;
-  color: var(--muted);
-  font-size: 1.05rem;
-  max-width: 32rem;
-  margin-top: var(--space-2);
-}
-
-/* =========================================================
    Side navigation (sticky, scroll-spy)
    Hidden under 1200px viewport.
    ========================================================= */
@@ -616,8 +605,7 @@ hr {
   .reveal-ready main > h2,
   .reveal-ready main > .cv-grid,
   .reveal-ready main > .research-thesis,
-  .reveal-ready main > .skill-grid,
-  .reveal-ready main > .outside {
+  .reveal-ready main > .skill-grid {
     opacity: 0;
     transform: translateY(10px);
     transition: opacity 0.6s ease, transform 0.6s ease;
@@ -627,8 +615,7 @@ hr {
   .reveal-ready main > h2.is-visible,
   .reveal-ready main > .cv-grid.is-visible,
   .reveal-ready main > .research-thesis.is-visible,
-  .reveal-ready main > .skill-grid.is-visible,
-  .reveal-ready main > .outside.is-visible {
+  .reveal-ready main > .skill-grid.is-visible {
     opacity: 1;
     transform: translateY(0);
   }
@@ -703,8 +690,7 @@ hr {
   .reveal-ready main > h2,
   .reveal-ready main > .cv-grid,
   .reveal-ready main > .research-thesis,
-  .reveal-ready main > .skill-grid,
-  .reveal-ready main > .outside {
+  .reveal-ready main > .skill-grid {
     opacity: 1 !important;
     transform: none !important;
   }
@@ -961,15 +947,6 @@ hr {
   }
   .sub-head::before { content: " · "; font-weight: 400; color: #555; }
   .sub-head::after { content: ": "; }
-
-  /* Outside: tight italic line */
-  .outside {
-    font-style: italic;
-    font-size: 9.5pt;
-    color: #000;
-    max-width: 100%;
-    margin: 0.1rem 0 0;
-  }
 
   /* Skills: flatten 3-col grid to stacked labeled lines */
   .skill-grid {

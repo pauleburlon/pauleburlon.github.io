@@ -1,5 +1,6 @@
 ---
-title: Start
+title: Paul Enno Burlon
+description: M.A. Soziologie an der LMU München. Bachelorarbeit zu Heiratsmustern unter Geflüchteten; vorherige Stationen bei Otto, BIK, MZES und GESIS.
 page_class: wide
 lang: de
 permalink: /de/
@@ -9,7 +10,6 @@ permalink: /de/
   <a href="#lebenslauf">Lebenslauf</a>
   <a href="#forschung">Forschung</a>
   <a href="#methoden">Methoden</a>
-  <a href="#privat">Privat</a>
 </aside>
 
 <section class="intro">
@@ -217,9 +217,3 @@ permalink: /de/
   </div>
 </div>
 
-## Neben der Forschung
-{: #privat}
-
-<p class="outside">
-  Langstreckenlauf, Rennradfahren und Klavier.
-</p>

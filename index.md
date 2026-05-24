@@ -1,5 +1,6 @@
 ---
-title: Home
+title: Paul Enno Burlon
+description: M.A. Sociology at LMU Munich. Bachelor's thesis on marriage-market dynamics among refugees in Germany; prior work at Otto, BIK, MZES, and GESIS.
 page_class: wide
 lang: en
 ---
@@ -8,7 +9,6 @@ lang: en
   <a href="#curriculum">Curriculum</a>
   <a href="#research">Research</a>
   <a href="#methods">Methods</a>
-  <a href="#outside">Outside</a>
 </aside>
 
 <section class="intro">
@@ -216,9 +216,3 @@ lang: en
   </div>
 </div>
 
-## Outside Research
-{: #outside}
-
-<p class="outside">
-  Long-distance running, road cycling, and the piano.
-</p>
