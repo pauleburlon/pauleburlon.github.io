@@ -160,7 +160,7 @@ lang: en
     discrimination remains a barrier.
   </p>
 
-  <figure class="coef-plot">
+  <figure class="coef-plot" markdown="0">
     <figcaption class="coef-title">Effect on marrying a partner with higher education</figcaption>
     <div class="coef-row">
       <span class="coef-label">From Iran (vs. Syria)</span>

@@ -162,7 +162,7 @@ permalink: /de/
     bleibt eine Barriere.
   </p>
 
-  <figure class="coef-plot">
+  <figure class="coef-plot" markdown="0">
     <figcaption class="coef-title">Effekt auf Heirat mit höher gebildeter Partnerin</figcaption>
     <div class="coef-row">
       <span class="coef-label">Aus Iran (vs. Syrien)</span>
