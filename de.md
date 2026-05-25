@@ -27,6 +27,7 @@ permalink: /de/
     <a href="mailto:pauleburlon@gmail.com"><span class="screen-only">E-Mail</span><span class="print-only">pauleburlon@gmail.com</span></a>
     <a href="https://www.linkedin.com/in/paul-burlon">LinkedIn</a>
     <a href="https://github.com/pauleburlon">GitHub</a>
+    <a href="https://orcid.org/0009-0004-8171-5282">ORCID</a>
     <a class="no-print" href="{{ '/CV_Paul_Burlon_DE.pdf' | relative_url }}">Lebenslauf (PDF)</a>
     <button class="no-print" type="button" onclick="window.print()">Als PDF speichern</button>
   </div>
@@ -147,18 +148,60 @@ permalink: /de/
 {: #forschung}
 
 <div class="research-thesis">
-  <p class="meta">Bachelorarbeit · Universität Mannheim · 2025</p>
+  <p class="meta">Bachelorarbeit · Universität Mannheim · 2024</p>
   <p class="title">Status Maximization via Marriage: Refugees' Partnership Preferences</p>
   <p>
-    Untersucht, ob Geflüchtete in Deutschland Partnerpräferenzen zeigen, die
-    mit Status-Maximierungs-Strategien vereinbar sind — auf Basis von
-    Umfragedaten und multivariater Analyse von Stated-Preference-Szenarien.
+    Untersucht, welche Faktoren beeinflussen, ob kürzlich angekommene
+    männliche Geflüchtete in Deutschland heiraten und ob sie Partnerinnen
+    mit höherem Bildungsabschluss wählen. Auf Basis des PARFORM-Panels
+    (N = 3.412) zeigt die Analyse, dass Sozialkapital (Freundschaften,
+    Aufenthaltsdauer) die Heiratswahrscheinlichkeit erhöht, während
+    Indikatoren struktureller Integration wie Deutschkenntnisse keinen
+    oder sogar negativen Effekt haben. Berufstätigkeit und Studium
+    prognostizieren aufwärtsgerichtete Heiratsmobilität; Diskriminierung
+    bleibt eine Barriere.
   </p>
+
+  <figure class="coef-plot">
+    <figcaption class="coef-title">Effekt auf Heirat mit höher gebildeter Partnerin</figcaption>
+    <div class="coef-row">
+      <span class="coef-label">Aus Iran (vs. Syrien)</span>
+      <div class="coef-track"><div class="coef-zero"></div><div class="coef-bar coef-positive" style="width: 50%"></div></div>
+      <span class="coef-value">+0,80</span>
+    </div>
+    <div class="coef-row">
+      <span class="coef-label">Studium (vs. arbeitslos)</span>
+      <div class="coef-track"><div class="coef-zero"></div><div class="coef-bar coef-positive" style="width: 47%"></div></div>
+      <span class="coef-value">+0,75</span>
+    </div>
+    <div class="coef-row">
+      <span class="coef-label">Berufstätig (vs. arbeitslos)</span>
+      <div class="coef-track"><div class="coef-zero"></div><div class="coef-bar coef-positive" style="width: 42%"></div></div>
+      <span class="coef-value">+0,67</span>
+    </div>
+    <div class="coef-row">
+      <span class="coef-label">Aus Afghanistan (vs. Syrien)</span>
+      <div class="coef-track"><div class="coef-zero"></div><div class="coef-bar coef-positive" style="width: 38%"></div></div>
+      <span class="coef-value">+0,61</span>
+    </div>
+    <div class="coef-row">
+      <span class="coef-label">Partnerin älter</span>
+      <div class="coef-track"><div class="coef-zero"></div><div class="coef-bar coef-positive" style="width: 22%"></div></div>
+      <span class="coef-value">+0,35</span>
+    </div>
+    <div class="coef-row">
+      <span class="coef-label">Diskriminierungs-Index</span>
+      <div class="coef-track"><div class="coef-zero"></div><div class="coef-bar coef-negative" style="width: 13%"></div></div>
+      <span class="coef-value">−0,21</span>
+    </div>
+    <p class="coef-meta">OLS · N = 334 · adj. R² = 0,071 · alle p &lt; 0,05</p>
+  </figure>
+
   <div class="keywords">
+    <span class="kw">Flucht &amp; Integration</span>
     <span class="kw">Heiratsmärkte</span>
-    <span class="kw">Flucht &amp; Migration</span>
-    <span class="kw">Stated Preferences</span>
-    <span class="kw">Multivariate Analyse</span>
+    <span class="kw">Sozialkapital</span>
+    <span class="kw">Statusmaximierung</span>
   </div>
 </div>
 

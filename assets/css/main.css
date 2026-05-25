@@ -443,6 +443,97 @@ hr {
   margin-top: var(--space-2);
 }
 
+/* Coefficient plot — diverging horizontal bar chart, pure CSS */
+.coef-plot {
+  margin: var(--space-3) 0 var(--space-2);
+  padding: 0;
+  font-size: 0.85rem;
+}
+
+.coef-title {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin: 0 0 var(--space-2);
+  font-weight: 600;
+}
+
+.coef-row {
+  display: grid;
+  grid-template-columns: 12rem 1fr 3rem;
+  gap: 0.8rem;
+  align-items: center;
+  padding: 0.18rem 0;
+}
+
+.coef-label {
+  text-align: right;
+  color: var(--muted);
+  font-style: italic;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.coef-track {
+  position: relative;
+  height: 0.9em;
+}
+
+.coef-zero {
+  position: absolute;
+  left: 50%;
+  top: -3px;
+  bottom: -3px;
+  width: 1px;
+  background: var(--rule);
+}
+
+.coef-bar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  border-radius: 1px;
+}
+
+.coef-bar.coef-positive {
+  left: 50%;
+  background: var(--accent);
+}
+
+.coef-bar.coef-negative {
+  right: 50%;
+  background: var(--accent-soft);
+  opacity: 0.85;
+}
+
+.coef-value {
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+  font-size: 0.85rem;
+  text-align: right;
+}
+
+.coef-meta {
+  margin: var(--space-2) 0 0;
+  padding-top: 0.4rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+@media (max-width: 640px) {
+  .coef-row {
+    grid-template-columns: 9rem 1fr 2.6rem;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+  }
+  .coef-label { font-size: 0.78rem; }
+}
+
 .kw {
   display: inline-block;
   font-size: 0.78rem;
@@ -675,7 +766,8 @@ hr {
   .site-footer,
   .no-print,
   .intro .tagline,
-  .intro .bio {
+  .intro .bio,
+  .coef-plot {
     display: none !important;
   }
 

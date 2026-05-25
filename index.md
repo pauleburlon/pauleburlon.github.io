@@ -26,6 +26,7 @@ lang: en
     <a href="mailto:pauleburlon@gmail.com"><span class="screen-only">Email</span><span class="print-only">pauleburlon@gmail.com</span></a>
     <a href="https://www.linkedin.com/in/paul-burlon">LinkedIn</a>
     <a href="https://github.com/pauleburlon">GitHub</a>
+    <a href="https://orcid.org/0009-0004-8171-5282">ORCID</a>
     <a class="no-print" href="{{ '/CV_Paul_Burlon_EN.pdf' | relative_url }}">CV (PDF)</a>
     <button class="no-print" type="button" onclick="window.print()">Save as PDF</button>
   </div>
@@ -146,18 +147,59 @@ lang: en
 {: #research}
 
 <div class="research-thesis">
-  <p class="meta">B.A. thesis · University of Mannheim · 2025</p>
+  <p class="meta">B.A. thesis · University of Mannheim · 2024</p>
   <p class="title">Status Maximization via Marriage: Refugees' Partnership Preferences</p>
   <p>
-    Examines whether refugees in Germany show partner preferences consistent
-    with status-maximization strategies, drawing on survey data and
-    multivariate analysis of stated-preference scenarios.
+    Examines which factors shape whether recent male refugees in Germany
+    marry within the host country and whether they marry partners with
+    higher educational attainment. Drawing on the PARFORM panel (N = 3,412),
+    the analysis finds that social capital (friendships, time in country)
+    increases marriage probability, while structural-integration markers
+    such as German-language proficiency show null or even negative effects.
+    Employment and education engagement predict upward marital mobility;
+    discrimination remains a barrier.
   </p>
+
+  <figure class="coef-plot">
+    <figcaption class="coef-title">Effect on marrying a partner with higher education</figcaption>
+    <div class="coef-row">
+      <span class="coef-label">From Iran (vs. Syria)</span>
+      <div class="coef-track"><div class="coef-zero"></div><div class="coef-bar coef-positive" style="width: 50%"></div></div>
+      <span class="coef-value">+0.80</span>
+    </div>
+    <div class="coef-row">
+      <span class="coef-label">Studies (vs. unemployed)</span>
+      <div class="coef-track"><div class="coef-zero"></div><div class="coef-bar coef-positive" style="width: 47%"></div></div>
+      <span class="coef-value">+0.75</span>
+    </div>
+    <div class="coef-row">
+      <span class="coef-label">Employed (vs. unemployed)</span>
+      <div class="coef-track"><div class="coef-zero"></div><div class="coef-bar coef-positive" style="width: 42%"></div></div>
+      <span class="coef-value">+0.67</span>
+    </div>
+    <div class="coef-row">
+      <span class="coef-label">From Afghanistan (vs. Syria)</span>
+      <div class="coef-track"><div class="coef-zero"></div><div class="coef-bar coef-positive" style="width: 38%"></div></div>
+      <span class="coef-value">+0.61</span>
+    </div>
+    <div class="coef-row">
+      <span class="coef-label">Partner older</span>
+      <div class="coef-track"><div class="coef-zero"></div><div class="coef-bar coef-positive" style="width: 22%"></div></div>
+      <span class="coef-value">+0.35</span>
+    </div>
+    <div class="coef-row">
+      <span class="coef-label">Discrimination index</span>
+      <div class="coef-track"><div class="coef-zero"></div><div class="coef-bar coef-negative" style="width: 13%"></div></div>
+      <span class="coef-value">−0.21</span>
+    </div>
+    <p class="coef-meta">OLS · N = 334 · adj. R² = 0.071 · all p &lt; 0.05</p>
+  </figure>
+
   <div class="keywords">
+    <span class="kw">Refugee integration</span>
     <span class="kw">Marriage markets</span>
-    <span class="kw">Forced migration</span>
-    <span class="kw">Stated preferences</span>
-    <span class="kw">Multivariate analysis</span>
+    <span class="kw">Social capital</span>
+    <span class="kw">Status maximization</span>
   </div>
 </div>
 
