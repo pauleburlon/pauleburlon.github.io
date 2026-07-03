@@ -713,6 +713,120 @@ hr {
 }
 
 /* =========================================================
+   Book cursor
+   A small open book replaces the pointer on fine-pointer
+   devices: it flips a page every few seconds and sheds
+   little pages while the cursor travels. JS adds .has-book
+   to <html>, so no-JS users keep the native cursor.
+   Respects reduced motion (the JS bails out entirely).
+   ========================================================= */
+html.has-book,
+html.has-book * { cursor: none !important; }
+
+.book-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 26px;
+  height: 26px;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  will-change: transform;
+}
+
+.book-cursor.is-active { opacity: 1; }
+
+/* Gentle hover-bob, on its own wrapper so it doesn't fight
+   the JS-positioned transform on .book-cursor itself. */
+.book-inner {
+  width: 100%;
+  height: 100%;
+  animation: book-bob 3.2s ease-in-out infinite;
+}
+
+.book-cursor svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  transition: transform 0.2s ease;
+}
+
+/* Grows slightly over links/buttons — the "clickable" cue,
+   since the pointer cursor is hidden. */
+.book-cursor.on-link svg { transform: scale(1.25); }
+
+.book-cursor .cover { fill: var(--accent); }
+
+.book-cursor .page {
+  fill: var(--bg-soft);
+  stroke: var(--muted);
+  stroke-width: 0.7;
+  stroke-linejoin: round;
+}
+
+.book-cursor .text-line {
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 0.8;
+  stroke-linecap: round;
+  opacity: 0.55;
+}
+
+/* The turning page: rests exactly on the right page, folds
+   across the spine every few seconds (a scaleX 1 → -1 flip
+   keeps it 2D-safe in every browser), lands on the left
+   page, then fades and resets while invisible. */
+.book-cursor .flip {
+  transform-box: fill-box;
+  transform-origin: left center;
+  animation: page-flip 7s ease-in-out infinite;
+}
+
+/* Riffle excitedly over clickable things */
+.book-cursor.on-link .flip { animation-duration: 1.6s; }
+
+@keyframes page-flip {
+  0%, 72% { transform: scaleX(1);  opacity: 1; }
+  86%     { transform: scaleX(-1); opacity: 1; }
+  88%     { transform: scaleX(-1); opacity: 0; }
+  99%     { transform: scaleX(1);  opacity: 0; }
+  100%    { transform: scaleX(1);  opacity: 1; }
+}
+
+@keyframes book-bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-2px); }
+}
+
+/* Little ruled pages that fly out of the book as it moves.
+   Position comes from left/top set by JS; flight + fade is
+   a one-shot Web Animation that removes the node when done. */
+.page-flake {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 7px;
+  height: 9px;
+  margin: -4px 0 0 -3px;
+  background-color: var(--bg-soft);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 2px,
+    var(--rule) 2px,
+    var(--rule) 3px
+  );
+  border: 1px solid var(--muted);
+  border-radius: 1px;
+  z-index: 9998;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+/* =========================================================
    Small screens
    ========================================================= */
 @media (max-width: 640px) {
@@ -765,6 +879,8 @@ hr {
   .side-nav,
   .site-footer,
   .no-print,
+  .book-cursor,
+  .page-flake,
   .intro .tagline,
   .intro .bio,
   .coef-plot {

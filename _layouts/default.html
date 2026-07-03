@@ -88,6 +88,136 @@
       targets.forEach(function (el) { observer.observe(el); });
     })();
 
+    // Book cursor: a small open book replaces the pointer. It flips a
+    // page every few seconds, and sheds little pages while it travels.
+    // Fine-pointer devices only; skipped entirely for reduced motion.
+    (function () {
+      if (!window.matchMedia('(pointer: fine)').matches) return;
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      if (reducedMotion.matches) return;
+      // iPadOS reports (pointer: fine) with a trackpad attached but ignores
+      // `cursor: none`, which would leave both cursors visible — skip it.
+      // (Real Macs have maxTouchPoints 0, so they pass this guard.)
+      if (navigator.maxTouchPoints > 1 && /iPad|Macintosh/.test(navigator.userAgent)) return;
+
+      var el = document.createElement('div');
+      el.className = 'book-cursor';
+      el.setAttribute('aria-hidden', 'true');
+      // Right-page spread + text lines; the left page reuses it mirrored
+      // about the spine (x=16), and the flipping page is an exact copy so
+      // it hides perfectly on whichever side it rests.
+      var page =
+        '<path class="page" d="M16 11 C 19.6 9.7, 24.2 9.5, 27.6 10.7 L 27.6 21.4 C 24.2 20.3, 19.6 20.5, 16 21.8 Z"/>' +
+        '<path class="text-line" d="M18 12.9 C 20.5 12.2, 23.3 12.1, 25.7 12.7"/>' +
+        '<path class="text-line" d="M18 15.2 C 20.5 14.5, 23.3 14.4, 25.7 15"/>' +
+        '<path class="text-line" d="M18 17.5 C 20.5 16.8, 23.3 16.7, 25.7 17.3"/>';
+      el.innerHTML =
+        '<div class="book-inner">' +
+          '<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+            '<path class="cover" d="M16 9.8 C 20 8.2, 25.6 8, 29.4 9.4 L 29.4 22.8 C 25.6 21.4, 20 21.6, 16 23.4 C 12 21.6, 6.4 21.4, 2.6 22.8 L 2.6 9.4 C 6.4 8, 12 8.2, 16 9.8 Z"/>' +
+            '<g>' + page + '</g>' +
+            '<g transform="matrix(-1 0 0 1 32 0)">' + page + '</g>' +
+            '<g class="flip">' + page + '</g>' +
+          '</svg>' +
+        '</div>';
+      document.body.appendChild(el);
+      var root = document.documentElement;
+      var disabled = false;
+
+      // Pages that fly out while the book moves
+      var canFly = window.Element && Element.prototype.animate;
+      var flakes = 0, travel = 0, lastX = null, lastY = null;
+
+      function spawnFlake(x, y, dx, dy) {
+        if (!canFly || flakes >= 12) return;
+        flakes++;
+        var f = document.createElement('div');
+        f.className = 'page-flake';
+        f.setAttribute('aria-hidden', 'true');
+        f.style.left = x + 'px';
+        f.style.top = y + 'px';
+        document.body.appendChild(f);
+        // Drift opposite to travel, with sideways spread, a downward
+        // settle, and a random tumble — like a sheet slipping out.
+        var mag = Math.hypot(dx, dy) || 1;
+        var ux = -dx / mag, uy = -dy / mag;
+        var side = (Math.random() - 0.5) * 46;
+        var dist = 24 + Math.random() * 26;
+        var tx = ux * dist - uy * side;
+        var ty = uy * dist + ux * side + 22 + Math.random() * 10;
+        var rot = (Math.random() - 0.5) * 260;
+        var life = 650 + Math.random() * 350;
+        f.animate(
+          [
+            { transform: 'translate(0,0) rotate(0deg)', opacity: 0.85 },
+            { transform: 'translate(' + tx + 'px,' + ty + 'px) rotate(' + rot + 'deg)', opacity: 0 }
+          ],
+          { duration: life, easing: 'cubic-bezier(0.25, 0.6, 0.35, 1)', fill: 'forwards' }
+        );
+        // Deterministic cleanup — onfinish can be missed (paused/seeked
+        // animations, devtools), which would strand flakes and jam the cap.
+        setTimeout(function () {
+          f.remove();
+          flakes--;
+        }, life + 100);
+      }
+
+      // Position from mouse-type pointers only, so taps on hybrid
+      // touch+mouse devices never teleport or strand the book.
+      // The native cursor is hidden only once the book is actually
+      // visible at a known position — never before.
+      document.addEventListener('pointermove', function (e) {
+        if (disabled || e.pointerType !== 'mouse') return;
+        el.style.transform =
+          'translate3d(' + (e.clientX - 13) + 'px,' + (e.clientY - 13) + 'px,0)';
+        el.classList.add('is-active');
+        root.classList.add('has-book');
+        if (lastX !== null) {
+          var dx = e.clientX - lastX, dy = e.clientY - lastY;
+          travel += Math.hypot(dx, dy);
+          if (travel > 80) {
+            travel = 0;
+            spawnFlake(e.clientX, e.clientY, dx, dy);
+          }
+        }
+        lastX = e.clientX;
+        lastY = e.clientY;
+      }, { passive: true });
+
+      // Touch interaction: put the book away and restore native behaviour
+      document.addEventListener('pointerdown', function (e) {
+        if (e.pointerType === 'touch') {
+          el.classList.remove('is-active');
+          root.classList.remove('has-book');
+          lastX = lastY = null;
+        }
+      }, { passive: true });
+
+      // Hide when the pointer leaves the window (mouse-only event)
+      document.addEventListener('mouseleave', function () {
+        el.classList.remove('is-active');
+      });
+
+      // Grow + riffle pages over clickable things
+      document.addEventListener('pointerover', function (e) {
+        if (disabled || e.pointerType !== 'mouse') return;
+        var t = e.target;
+        el.classList.toggle('on-link', !!(t.closest && t.closest('a, button')));
+      });
+
+      // Kill switch: honor reduced-motion turned on mid-session
+      function stop() {
+        disabled = true;
+        root.classList.remove('has-book');
+        el.remove();
+      }
+      if (reducedMotion.addEventListener) {
+        reducedMotion.addEventListener('change', function (ev) {
+          if (ev.matches) stop();
+        });
+      }
+    })();
+
     // Scroll-spy: highlight side-nav link for the section in view
     (function () {
       var links = document.querySelectorAll('.side-nav a');
