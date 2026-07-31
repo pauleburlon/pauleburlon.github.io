@@ -1,0 +1,13 @@
+/* Colour: #000 on #fff, one accent (International Klein Blue). Nothing else. */
+:root{
+--black:#000;
+--white:#fff;
+--accent:#002FA7; /* links, focus, ONE emphasis per figure. 10.7:1 on white (AAA) */
+--bg:var(--white);
+--fg:var(--black);
+--rule:var(--black); /* all hairlines are full black, 1px */
+--link:var(--accent);
+--focus:var(--accent);
+--on-accent:var(--white); /* text on accent fill, 10.7:1 (AAA) */
+--disabled-alpha:.35; /* @kind other */ /* the only "grey" in the system */
+}

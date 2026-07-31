@@ -1,0 +1,12 @@
+/* Spacing: 8px base unit. Radius and shadow do not exist. */
+:root{
+--u:8px;
+--s1:4px;--s2:8px;--s3:16px;--s4:24px;--s5:40px;--s6:64px;--s7:104px;
+--radius:0; /* never override */
+--shadow:none; /* never override */
+--hairline:1px solid var(--rule);
+--focus-ring:3px solid var(--focus);
+--focus-offset:3px;
+--page-pad:clamp(16px,4vw,48px);
+--page-max:1280px;
+}

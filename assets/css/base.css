@@ -1,0 +1,28 @@
+/* Base element styles. Semantic HTML first; classes are the exception. */
+*,*::before,*::after{box-sizing:border-box;border-radius:0}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-sans);font-size:var(--text-body);line-height:var(--leading-body);font-weight:var(--w-regular)}
+h1,h2,h3,h4,p,figure,blockquote{margin:0}
+a{color:var(--link);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{background:var(--link);color:var(--on-accent);text-decoration:none}
+:focus{outline:none}
+:focus-visible{outline:var(--focus-ring);outline-offset:var(--focus-offset)}
+::selection{background:var(--accent);color:var(--on-accent)}
+hr{border:0;border-top:var(--hairline);margin:0}
+code,kbd,samp{font-family:var(--font-mono);font-size:.88em}
+strong{font-weight:var(--w-bold)}
+sup{line-height:0}
+*{transition:none!important;animation-duration:0s!important} /* state changes are instant */
+@media (prefers-reduced-motion:no-preference){ /* still none — the rule above is the system */ }
+.b-label{font-family:var(--font-mono);font-size:var(--text-meta);font-weight:var(--w-regular);text-transform:uppercase;letter-spacing:var(--tracking-label);line-height:1.5}
+.b-display{font-family:var(--font-sans);font-size:var(--text-display);line-height:var(--leading-display);letter-spacing:var(--tracking-display);font-weight:var(--w-medium);text-transform:uppercase;margin:0}
+.b-clip{overflow:hidden;white-space:nowrap} /* wrapper for display type meant to clip at the edge */
+.b-h2{font-family:var(--font-sans);font-size:var(--text-h2);line-height:var(--leading-tight);letter-spacing:-.02em;font-weight:var(--w-medium);text-wrap:balance}
+.b-h3{font-size:var(--text-h3);line-height:1.25;font-weight:var(--w-medium)}
+.b-prose{max-width:var(--measure)}
+.b-prose p+p{margin-top:1em}
+.b-page{max-width:var(--page-max);margin:0 auto;padding:0 var(--page-pad)}
+.b-rule-bleed{border:0;border-top:var(--hairline);margin:0 calc(-1*var(--page-pad))} /* full-bleed divider inside .b-page */
+.b-exposed{display:grid;grid-template-columns:repeat(var(--cols,12),1fr)}
+.b-exposed>*{border-left:var(--hairline);padding:var(--s2) var(--s3) var(--s2) var(--s2);min-width:0}
+.b-exposed--closed{border-right:var(--hairline)}

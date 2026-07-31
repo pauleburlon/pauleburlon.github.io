@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "static-preview",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "4173", "-d", "/private/tmp/claude-501/-Users-main-GitHub-pauleburlon-github-io/ee596f42-5838-4768-8d37-2189ae3ede0c/scratchpad/preview"],
+      "port": 4173
+    }
+  ]
+}

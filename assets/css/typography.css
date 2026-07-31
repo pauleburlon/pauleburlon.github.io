@@ -1,0 +1,22 @@
+/* Type: one grotesque + one mono. Violent scale jumps, not a ratio. */
+:root{
+--font-sans:'Space Grotesk',system-ui,-apple-system,sans-serif; /* LOCKED 07/2026 — user pick */
+--font-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace; /* LOCKED 07/2026 — user pick */
+/* scale — deliberate jumps: 11 / 13 / 15 / 17 / 22 / clamp / clamp */
+--text-micro:11px; /* mono only: axis labels, table stars, imprint */
+--text-meta:13px; /* mono only: dates, nav, labels, captions */
+--text-small:15px; /* tables, footnotes */
+--text-body:17px;
+--text-h3:22px;
+--text-h2:clamp(30px,4.5vw,48px);
+--text-display:clamp(72px,16vw,320px); /* sized to clip at the viewport edge */
+--leading-display:.9;
+--leading-tight:1.05;
+--leading-body:1.5;
+--tracking-label:.08em; /* uppercase mono labels ONLY, never running text */
+--tracking-display:-.03em;
+--w-regular:400; /* @kind font */
+--w-medium:500; /* @kind font */
+--w-bold:700; /* @kind font */
+--measure:60ch; /* max line length for running text */
+}
