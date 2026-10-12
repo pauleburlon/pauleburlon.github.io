@@ -10,9 +10,9 @@ layout: null
 <title>Paul Burlon</title>
 <meta name="description" content="Paul Burlon — M.A. Sociology, LMU München. Quantitative inequality research: wealth, migration and integration, political and media discourse.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/css/tokens.css">
-<link rel="stylesheet" href="assets/css/raw.css">
-<link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="assets/css/tokens.css?v=2">
+<link rel="stylesheet" href="assets/css/raw.css?v=2">
+<link rel="stylesheet" href="assets/css/site.css?v=2">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -139,7 +139,10 @@ layout: null
 
   <footer class="raw-footer">
     <p class="stamp">{% if site.github.build_revision %}Built from <a href="https://github.com/pauleburlon/pauleburlon.github.io/commit/{{ site.github.build_revision }}"><code>{{ site.github.build_revision | slice: 0, 7 }}</code></a> on {% else %}Built on {% endif %}<time datetime="{{ site.time | date: '%Y-%m-%d' }}">{{ site.time | date: '%Y-%m-%d' }}</time> · <a href="https://github.com/pauleburlon/pauleburlon.github.io">Source</a></p>
+    <p><button type="button" class="view-source" aria-controls="page-source" aria-expanded="false" hidden>View page source</button></p>
+    <pre class="page-source" id="page-source" hidden></pre>
   </footer>
 </div>
+<script src="assets/js/view-source.js" defer></script>
 </body>
 </html>
