@@ -139,7 +139,10 @@ layout: null
 
   <footer class="raw-footer">
     <p class="stamp">{% if site.github.build_revision %}Built from <a href="https://github.com/pauleburlon/pauleburlon.github.io/commit/{{ site.github.build_revision }}"><code>{{ site.github.build_revision | slice: 0, 7 }}</code></a> on {% else %}Built on {% endif %}<time datetime="{{ site.time | date: '%Y-%m-%d' }}">{{ site.time | date: '%Y-%m-%d' }}</time> · <a href="https://github.com/pauleburlon/pauleburlon.github.io">Source</a></p>
+    <p><button type="button" class="view-source" aria-controls="page-source" aria-expanded="false" hidden>View page source</button></p>
+    <pre class="page-source" id="page-source" hidden></pre>
   </footer>
 </div>
+<script src="assets/js/view-source.js" defer></script>
 </body>
 </html>

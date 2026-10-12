@@ -28,11 +28,22 @@ html { background: var(--paper); }
 
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
+/* "View page source" in the footer. */
+.raw-footer .view-source { margin-top: var(--space-2); }
+.raw-footer .page-source {
+  margin: var(--space-2) 0 0;
+  max-height: 70vh;
+  overflow: auto;
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--ink);
+}
+
 @media print {
   @page { size: A4; margin: 1.6cm; }
   :root { color-scheme: light; }
   body { background: #fff; color: #000; }
-  .raw-nav, .skip-link, .raw-footer .stamp { display: none !important; }
+  .raw-nav, .skip-link, .raw-footer .stamp, .view-source, .page-source { display: none !important; }
   a, a:visited { color: #000; }
   .raw-page { max-width: 100%; padding: 0; }
 }
