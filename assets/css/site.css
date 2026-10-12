@@ -1,9 +1,7 @@
 /* Site-only additions on top of Raw (tokens.css + raw.css). Keep this file small. */
 
-/* Dark follows the system setting (tokens.css swaps the colours; this swaps form controls and scrollbars). */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) { color-scheme: dark; }
-}
+/* Paint the page root as well as body, so the background can never fall back to the browser's white. */
+html { background: var(--paper); }
 
 /* Skip link: hidden until focused. */
 .skip-link { position: absolute; left: -9999px; top: var(--space-1); }

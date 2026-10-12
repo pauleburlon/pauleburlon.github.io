@@ -1,6 +1,7 @@
 /* Raw — generated from the Raw design system's tokens.json. Edit the tokens there, not here. */
 
 :root, [data-theme="light"] {
+  color-scheme: light;
   --paper: #ffffff;
   --paper-2: #efefef;
   --ink: #000000;
@@ -26,6 +27,7 @@
 /* Dark follows the reader's system setting; data-theme="light" on <html> opts out. */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
+    color-scheme: dark;
     --paper: #121212;
     --paper-2: #1f1f1f;
     --ink: #ffffff;
@@ -50,6 +52,7 @@
   }
 }
 [data-theme="dark"] {
+  color-scheme: dark;
   --paper: #121212;
   --paper-2: #1f1f1f;
   --ink: #ffffff;
