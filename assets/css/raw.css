@@ -1,0 +1,205 @@
+/* Raw — the plain layer.
+   Load after tokens.css. Plain HTML elements are the components; a few raw- classes
+   cover the patterns HTML has no element for. No motion, no shadows, no rounding. */
+
+/* ---------- Page ---------- */
+:root { color-scheme: light; }
+[data-theme="dark"] { color-scheme: dark; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-serif);
+  font-size: 18px;
+  line-height: 28px;
+  font-kerning: normal;
+  -webkit-text-size-adjust: 100%;
+  counter-reset: raw-figure;
+}
+
+/* One left-aligned column; the space to its right stays empty (margin-column). */
+.raw-page {
+  box-sizing: border-box;
+  max-width: calc(var(--measure) + 2 * var(--space-3));
+  padding: var(--space-3) var(--space-3) var(--space-4);
+}
+@media (min-width: 900px) {
+  .raw-page {
+    max-width: calc(var(--measure) + var(--space-4) + var(--margin-column));
+    padding: var(--space-4) calc(var(--margin-column)) var(--space-4) var(--space-4);
+  }
+}
+
+::selection { background: var(--mark); color: var(--on-mark); }
+
+/* ---------- Text ---------- */
+h1, h2, h3 { font-weight: 700; margin: var(--space-4) 0 var(--space-2); }
+h1 { font-size: 36px; line-height: 40px; margin-top: 0; }
+h2 { font-size: 27px; line-height: 32px; }
+h3 { font-size: 21px; line-height: 28px; margin-top: var(--space-3); }
+
+p, ul, ol, dl, pre, blockquote, table, figure { margin: 0 0 var(--space-3); }
+ul, ol { padding-left: var(--space-3); }
+li + li { margin-top: 0; }
+blockquote { margin-left: var(--space-3); margin-right: 0; }
+
+small, .raw-meta { font-size: 15px; line-height: 22px; }
+.raw-meta { color: var(--ink-muted); }
+
+mark { background: var(--mark); color: var(--on-mark); padding: 0 2px; }
+
+code, kbd, samp, pre { font-family: var(--font-mono); font-size: 15px; }
+pre {
+  line-height: 24px;
+  padding: var(--space-2);
+  background: var(--paper-2);
+  border: var(--stroke-1) solid var(--line);
+  border-radius: var(--radius-0);
+  overflow-x: auto;
+}
+
+hr { border: 0; border-top: var(--stroke-1) solid var(--line); margin: var(--space-3) 0; }
+
+/* ---------- Links ---------- */
+a {
+  color: var(--link);
+  text-decoration-line: underline;
+  text-decoration-thickness: var(--stroke-1);
+  text-underline-offset: 3px;
+}
+a:visited { color: var(--link-visited); }
+a:hover { text-decoration-thickness: var(--stroke-2); }
+a:active { color: var(--link-active); }
+:focus-visible { outline: var(--stroke-2) solid var(--focus); outline-offset: 2px; }
+
+/* Nav: a row of plain links. The current page is plain text, not a link. */
+.raw-nav { display: flex; flex-wrap: wrap; gap: 0 var(--space-3); margin: 0 0 var(--space-3); }
+.raw-nav a[aria-current="page"] { color: var(--ink); text-decoration: none; font-weight: 700; }
+
+/* ---------- Button ---------- */
+button, .raw-button {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  line-height: 22px;
+  padding: 2px var(--space-2);
+  color: var(--ink);
+  background: var(--paper-2);
+  border: var(--stroke-1) solid var(--ink);
+  border-radius: var(--radius-0);
+  cursor: pointer;
+}
+button:hover, .raw-button:hover { background: var(--ink); color: var(--paper); }
+button:active, .raw-button:active { position: relative; top: 1px; }
+button:disabled { color: var(--ink-muted); border-color: var(--line); background: var(--paper-2); cursor: not-allowed; }
+
+/* ---------- Table ---------- */
+table { border-collapse: collapse; }
+th, td {
+  border: var(--stroke-1) solid var(--line);
+  padding: 0 var(--space-1);
+  text-align: left;
+  vertical-align: top;
+}
+th { font-weight: 700; }
+th.num, td.num { text-align: right; }
+caption {
+  caption-side: top;
+  text-align: left;
+  font-size: 15px;
+  line-height: 22px;
+  color: var(--ink-muted);
+  padding-bottom: var(--space-1);
+}
+.raw-source { font-size: 15px; line-height: 22px; color: var(--ink-muted); margin-top: calc(-1 * var(--space-3) + var(--space-1)); }
+
+/* ---------- Figure ---------- */
+figure { counter-increment: raw-figure; margin-left: 0; margin-right: 0; }
+figcaption {
+  font-size: 15px;
+  line-height: 22px;
+  color: var(--ink-muted);
+  margin-top: var(--space-1);
+}
+figcaption::before { content: "Figure " counter(raw-figure) ". "; color: var(--ink); font-weight: 700; }
+figure[data-unnumbered] { counter-increment: none; }
+figure[data-unnumbered] figcaption::before { content: none; }
+
+/* Charts are inline SVG drawn with these classes. */
+.raw-chart { display: block; width: 100%; height: auto; overflow: visible; }
+.raw-chart text { font-family: var(--font-mono); font-size: 13px; fill: var(--ink-muted); }
+.raw-chart .raw-value { fill: var(--ink); }
+.raw-chart .raw-axis { stroke: var(--line); stroke-width: var(--stroke-1); fill: none; }
+.raw-chart .raw-grid { stroke: var(--line-faint); stroke-width: var(--stroke-1); fill: none; }
+.raw-chart .raw-line { fill: none; stroke-width: var(--stroke-2); }
+.raw-s1 { fill: var(--data-1); stroke: var(--data-1); }
+.raw-s2 { fill: var(--data-2); stroke: var(--data-2); }
+.raw-s3 { fill: var(--data-3); stroke: var(--data-3); }
+.raw-s4 { fill: var(--data-4); stroke: var(--data-4); }
+.raw-chart .raw-line.raw-s1, .raw-chart .raw-line.raw-s2,
+.raw-chart .raw-line.raw-s3, .raw-chart .raw-line.raw-s4 { fill: none; }
+
+/* ---------- Placeholder ---------- */
+/* An empty slot for a figure that does not exist yet. */
+.raw-placeholder {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 168px;
+  border: var(--stroke-1) dashed var(--line);
+  background-image: repeating-linear-gradient(135deg, var(--line-faint) 0 1px, transparent 1px var(--space-1));
+}
+/* A real chart drawn from dummy data: hatched over, tagged. */
+figure[data-placeholder] > .raw-figure-body { position: relative; }
+figure[data-placeholder] > .raw-figure-body::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(135deg, var(--line-faint) 0 1px, transparent 1px var(--space-1));
+  pointer-events: none;
+}
+figure[data-placeholder] > .raw-figure-body > .raw-tag {
+  position: absolute;
+  top: var(--space-1);
+  left: var(--space-1);
+  z-index: 1;
+}
+.raw-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 20px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0 var(--space-1);
+  background: var(--mark);
+  color: var(--on-mark);
+}
+
+/* ---------- Entries (publications, projects, CV lines) ---------- */
+.raw-entries { list-style: none; padding: 0; }
+.raw-entry { display: grid; grid-template-columns: 7ch 1fr; column-gap: var(--space-2); }
+.raw-entry + .raw-entry { margin-top: var(--space-2); }
+.raw-entry > time, .raw-entry > .raw-year {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  color: var(--ink-muted);
+}
+.raw-entry p { margin: 0; }
+@media (max-width: 480px) {
+  .raw-entry { grid-template-columns: 1fr; }
+}
+
+/* ---------- Footer ---------- */
+.raw-footer {
+  margin-top: var(--space-4);
+  padding-top: var(--space-2);
+  border-top: var(--stroke-1) solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--ink-muted);
+}
+.raw-footer p { margin: 0; }
+.raw-footer code { font-size: 13px; }

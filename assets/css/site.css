@@ -1,16 +1,40 @@
-html,body{background:var(--bg)}
-    @font-face{font-family:'Space Grotesk Fallback';src:local('Arial');size-adjust:105.5%;ascent-override:93.2%;descent-override:27.3%;line-gap-override:0%}
-    @font-face{font-family:'JetBrains Mono Fallback';src:local('Courier New');size-adjust:99.9%;ascent-override:102.1%;descent-override:30%;line-gap-override:0%}
-    :root{--font-sans:'Space Grotesk','Space Grotesk Fallback',Arial,sans-serif;--font-mono:'JetBrains Mono','JetBrains Mono Fallback','Courier New',monospace}
-    /* Hover generally = accent fill (user decision 07/2026; supersedes black-fill inversion for nav/footer/buttons) */
-    .b-nav__title:hover,.b-nav__links a:hover,.b-footer a:hover,.b-project__title a:hover,.b-btn:hover{background:var(--accent);color:var(--on-accent)}
-    [data-theme="dark"]{--bg:var(--black);--fg:var(--white);--rule:var(--white);--hairline:1px solid var(--white);--accent:#F27F1B;--link:#F27F1B;--focus:#F27F1B;--on-accent:var(--black)}
-    @media print{
-      @page{size:A4;margin:1.6cm}
-      [data-theme="dark"]{--bg:#fff;--fg:#000;--rule:#000;--accent:#000;--link:#000;--focus:#000;--on-accent:#fff}
-      :root{--accent:#000;--link:#000}
-      .pr-hide{display:none!important}
-      a{color:#000!important;text-decoration:none!important;background:none!important}
-      .b-page{max-width:100%!important}
-    }
-.skip-link:focus{left:16px !important}
+/* Site-only additions on top of Raw (tokens.css + raw.css). Keep this file small. */
+
+/* Dark follows the system setting (tokens.css swaps the colours; this swaps form controls and scrollbars). */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { color-scheme: dark; }
+}
+
+/* Skip link: hidden until focused. */
+.skip-link { position: absolute; left: -9999px; top: var(--space-1); }
+.skip-link:focus { left: var(--space-1); background: var(--mark); color: var(--on-mark); padding: 0 var(--space-1); }
+
+/* Charts keep a readable size on phones and scroll sideways instead of shrinking. */
+.raw-figure-body { overflow-x: auto; }
+.raw-figure-body > .raw-chart { min-width: 560px; }
+
+/* Inside an SVG chart: the placeholder hatching, its tag, and a "no data" band. */
+.raw-chart .hatch-line { stroke: var(--line-faint); stroke-width: var(--stroke-1); }
+.raw-chart .tag-bg { fill: var(--mark); }
+.raw-chart text.tag-text { fill: var(--on-mark); letter-spacing: 0.04em; }
+.raw-chart .no-data { fill: var(--paper-2); }
+.raw-chart .gap { fill: var(--paper); stroke: var(--line); stroke-width: var(--stroke-1); }
+.raw-chart .marker { stroke: var(--ink); stroke-width: var(--stroke-1); }
+.raw-chart .zero { stroke: var(--ink); stroke-width: var(--stroke-1); }
+
+/* A bar chart drawn inside a Raw table: the numbers stay a table, the bars reflow on any screen. */
+.bar-table { width: 100%; }
+.bar-table .bar-cell { position: relative; width: 45%; min-width: 5rem; padding: 0; }
+.bar-table td.bar-cell { background: linear-gradient(var(--ink), var(--ink)) no-repeat var(--zero) 0 / var(--stroke-1) 100%; }
+.bar-table .bar { position: absolute; top: 6px; height: 16px; background: var(--data-1); }
+
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+@media print {
+  @page { size: A4; margin: 1.6cm; }
+  :root { color-scheme: light; }
+  body { background: #fff; color: #000; }
+  .raw-nav, .skip-link, .raw-footer .stamp { display: none !important; }
+  a, a:visited { color: #000; }
+  .raw-page { max-width: 100%; padding: 0; }
+}
