@@ -18,10 +18,11 @@ body {
   counter-reset: raw-figure;
 }
 
-/* One left-aligned column; the space to its right stays empty (margin-column). */
+/* One left-aligned column with a margin column to its right; the two are centred together on wide screens. */
 .raw-page {
   box-sizing: border-box;
   max-width: calc(var(--measure) + 2 * var(--space-3));
+  margin-inline: auto;
   padding: var(--space-3) var(--space-3) var(--space-4);
 }
 @media (min-width: 900px) {
@@ -189,6 +190,17 @@ figure[data-placeholder] > .raw-figure-body > .raw-tag {
 .raw-entry p { margin: 0; }
 @media (max-width: 480px) {
   .raw-entry { grid-template-columns: 1fr; }
+}
+/* Wide screens: an entry's facts line moves into the margin column, level with the entry's first line. */
+@media (min-width: 900px) {
+  .raw-entry { position: relative; }
+  .raw-entry .raw-meta {
+    position: absolute;
+    top: 4px;
+    left: calc(100% + var(--space-4));
+    width: calc(var(--margin-column) - var(--space-4));
+    margin: 0;
+  }
 }
 
 /* ---------- Footer ---------- */
