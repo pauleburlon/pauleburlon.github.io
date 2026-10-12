@@ -1,0 +1,93 @@
+/* Raw — generated from the Raw design system's tokens.json. Edit the tokens there, not here. */
+
+:root, [data-theme="light"] {
+  --paper: #ffffff;
+  --paper-2: #efefef;
+  --ink: #000000;
+  --ink-muted: #5e5e5e;
+  --line: #808080;
+  --line-faint: #d6d6d6;
+  --link: #0000ee;
+  --link-visited: #551a8b;
+  --link-active: #e00000;
+  --mark: #ffff00;
+  --on-mark: #000000;
+  --focus: var(--link);
+  --data-1: #2a78d6;
+  --data-2: #eb6834;
+  --data-3: #1baf7a;
+  --data-4: #eda100;
+  --seq-1: #86b6ef;
+  --seq-2: #5598e7;
+  --seq-3: #2a78d6;
+  --seq-4: #1c5cab;
+  --seq-5: #104281;
+}
+/* Dark follows the reader's system setting; data-theme="light" on <html> opts out. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #121212;
+    --paper-2: #1f1f1f;
+    --ink: #ffffff;
+    --ink-muted: #a6a6a6;
+    --line: #7a7a7a;
+    --line-faint: #363636;
+    --link: #9e9eff;
+    --link-visited: #d0adf0;
+    --link-active: #ff0000;
+    --mark: #ffff00;
+    --on-mark: #000000;
+    --focus: var(--link);
+    --data-1: #3987e5;
+    --data-2: #d95926;
+    --data-3: #199e70;
+    --data-4: #c98500;
+    --seq-1: #184f95;
+    --seq-2: #256abf;
+    --seq-3: #3987e5;
+    --seq-4: #6da7ec;
+    --seq-5: #9ec5f4;
+  }
+}
+[data-theme="dark"] {
+  --paper: #121212;
+  --paper-2: #1f1f1f;
+  --ink: #ffffff;
+  --ink-muted: #a6a6a6;
+  --line: #7a7a7a;
+  --line-faint: #363636;
+  --link: #9e9eff;
+  --link-visited: #d0adf0;
+  --link-active: #ff0000;
+  --mark: #ffff00;
+  --on-mark: #000000;
+  --focus: var(--link);
+  --data-1: #3987e5;
+  --data-2: #d95926;
+  --data-3: #199e70;
+  --data-4: #c98500;
+  --seq-1: #184f95;
+  --seq-2: #256abf;
+  --seq-3: #3987e5;
+  --seq-4: #6da7ec;
+  --seq-5: #9ec5f4;
+}
+:root {
+  --space-1: 7px;
+  --space-2: 14px;
+  --space-3: 28px;
+  --space-4: 56px;
+  --radius-0: 0;
+  --stroke-1: 1px;
+  --stroke-2: 2px;
+  --measure: 65ch;
+  --margin-column: 16rem;
+  --font-serif: "Charter", "Raw Supplement", Georgia, serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace;
+}
+@font-face { font-family: "Charter"; src: url("../fonts/Charter-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Charter"; src: url("../fonts/Charter-Italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "Charter"; src: url("../fonts/Charter-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Charter"; src: url("../fonts/Charter-BoldItalic.woff2") format("woff2"); font-weight: 700; font-style: italic; font-display: swap; }
+@font-face { font-family: "Raw Supplement"; src: url("../fonts/RawSupplement-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Raw Supplement"; src: url("../fonts/RawSupplement-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
