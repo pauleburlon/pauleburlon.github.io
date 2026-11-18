@@ -1,4 +1,6 @@
-/* Raw — generated from the Raw design system's tokens.json. Edit the tokens there, not here. */
+/* Raw — tokens as CSS custom properties, built from tokens.json. Change a value there, then rebuild this file.
+   Light is the default. data-theme="dark" on <html> forces dark; without it, dark follows the system setting.
+   color-scheme travels with the colours, so form controls, scrollbars and dialogs switch too. */
 
 :root, [data-theme="light"] {
   color-scheme: light;
@@ -14,17 +16,18 @@
   --mark: #ffff00;
   --on-mark: #000000;
   --focus: var(--link);
+  --accent: var(--link);
+  --on-accent: var(--paper);
   --data-1: #2a78d6;
   --data-2: #eb6834;
   --data-3: #1baf7a;
-  --data-4: #eda100;
+  --data-4: #a16c00;
   --seq-1: #86b6ef;
   --seq-2: #5598e7;
   --seq-3: #2a78d6;
   --seq-4: #1c5cab;
   --seq-5: #104281;
 }
-/* Dark follows the reader's system setting; data-theme="light" on <html> opts out. */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     color-scheme: dark;
@@ -40,6 +43,8 @@
     --mark: #ffff00;
     --on-mark: #000000;
     --focus: var(--link);
+    --accent: var(--link);
+    --on-accent: var(--paper);
     --data-1: #3987e5;
     --data-2: #d95926;
     --data-3: #199e70;
@@ -65,6 +70,8 @@
   --mark: #ffff00;
   --on-mark: #000000;
   --focus: var(--link);
+  --accent: var(--link);
+  --on-accent: var(--paper);
   --data-1: #3987e5;
   --data-2: #d95926;
   --data-3: #199e70;
@@ -76,21 +83,20 @@
   --seq-5: #9ec5f4;
 }
 :root {
+  /* spacing */
   --space-1: 7px;
   --space-2: 14px;
   --space-3: 28px;
   --space-4: 56px;
+  /* radius */
   --radius-0: 0;
+  /* stroke */
   --stroke-1: 1px;
   --stroke-2: 2px;
+  /* layout */
   --measure: 65ch;
   --margin-column: 16rem;
+  /* type families */
   --font-serif: "Charter", "Raw Supplement", Georgia, serif;
   --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace;
 }
-@font-face { font-family: "Charter"; src: url("../fonts/Charter-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
-@font-face { font-family: "Charter"; src: url("../fonts/Charter-Italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
-@font-face { font-family: "Charter"; src: url("../fonts/Charter-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
-@font-face { font-family: "Charter"; src: url("../fonts/Charter-BoldItalic.woff2") format("woff2"); font-weight: 700; font-style: italic; font-display: swap; }
-@font-face { font-family: "Raw Supplement"; src: url("../fonts/RawSupplement-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
-@font-face { font-family: "Raw Supplement"; src: url("../fonts/RawSupplement-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }

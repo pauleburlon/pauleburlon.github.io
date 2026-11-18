@@ -1,5 +1,5 @@
 /* Raw — the plain layer.
-   Load after tokens.css. Plain HTML elements are the components; a few raw- classes
+   Load after css/tokens.css and css/fonts.css. Plain HTML elements are the components; a few raw- classes
    cover the patterns HTML has no element for. No motion, no shadows, no rounding. */
 
 /* ---------- Page ---------- */
@@ -90,9 +90,154 @@ button, .raw-button {
   border-radius: var(--radius-0);
   cursor: pointer;
 }
-button:hover, .raw-button:hover { background: var(--ink); color: var(--paper); }
-button:active, .raw-button:active { position: relative; top: 1px; }
-button:disabled { color: var(--ink-muted); border-color: var(--line); background: var(--paper-2); cursor: not-allowed; }
+/* Hover only where there is a pointer that hovers: iOS keeps :hover after a tap until you tap elsewhere. */
+@media (hover: hover) {
+  button:hover, .raw-button:hover { background: var(--ink); color: var(--paper); }
+}
+/* Pressed: a 1px drop by transform, so an absolutely positioned button keeps its position. */
+button:active, .raw-button:active { transform: translateY(1px); }
+button:disabled { color: var(--ink-muted); border-color: var(--line); background: var(--paper-2); cursor: not-allowed; transform: none; }
+
+/* ---------- Raw in apps ---------- */
+/* A button that is a row, a day or a box: no button shape, no hover inversion, no drop. */
+button.raw-bare, .raw-bare {
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+@media (hover: hover) {
+  button.raw-bare:hover, .raw-bare:hover { background: none; color: inherit; }
+}
+button.raw-bare:active, .raw-bare:active { transform: none; }
+
+/* Tap area: same look, a 44px target. The ::after reaches 8px above and below, 4px left and right.
+   :where() keeps the position at zero specificity, so an app rule that positions the control wins. */
+:where(.raw-tap) { position: relative; }
+.raw-tap::after { content: ""; position: absolute; inset: -8px -4px; }
+
+/* The tall button for a full-width action: the same button, 42px (one and a half lines) high. */
+button.raw-block, .raw-block {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 42px;
+  padding: 9px var(--space-2);
+  text-align: center;
+}
+
+/* Text field: 42px high, square, 18px Charter (iOS zooms into anything under 16px). */
+.raw-input,
+input:not([type]), input[type="text"], input[type="search"], input[type="email"], input[type="url"],
+input[type="tel"], input[type="number"], input[type="password"], textarea {
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+  height: 42px;
+  padding: 6px var(--space-1);
+  font-family: var(--font-serif);
+  font-size: 18px;
+  line-height: 28px;
+  color: var(--ink);
+  background: var(--paper);
+  border: var(--stroke-1) solid var(--line);
+  border-radius: var(--radius-0);
+}
+textarea { height: auto; min-height: 42px; }
+::placeholder { color: var(--ink-muted); opacity: 1; }
+
+/* Checkbox: 21px, square, ink border; checked fills with accent and draws the tick in on-accent. */
+input[type="checkbox"].raw-check {
+  -webkit-appearance: none;
+  appearance: none;
+  display: inline-grid;
+  place-content: center;
+  box-sizing: border-box;
+  width: 21px;
+  height: 21px;
+  margin: 0;
+  vertical-align: -4px;
+  background: var(--paper);
+  border: var(--stroke-1) solid var(--ink);
+  border-radius: var(--radius-0);
+  cursor: pointer;
+}
+input[type="checkbox"].raw-check::before {
+  content: "";
+  width: 5px;
+  height: 11px;
+  border: solid var(--on-accent);
+  border-width: 0 2px 2px 0;
+  transform: translateY(-1px) rotate(45deg);
+  visibility: hidden;
+}
+input[type="checkbox"].raw-check:checked { background: var(--accent); border-color: var(--accent); }
+input[type="checkbox"].raw-check:checked::before { visibility: visible; }
+input[type="checkbox"].raw-check:disabled { background: var(--paper-2); border-color: var(--line); cursor: not-allowed; }
+
+/* Sheet from the bottom: paper, a line border without its bottom edge, square, no motion. */
+dialog.raw-sheet {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  max-height: 85vh;
+  margin: auto 0 0;
+  padding: var(--space-3) var(--space-3) calc(var(--space-3) + env(safe-area-inset-bottom, 0px));
+  overflow: auto;
+  color: var(--ink);
+  background: var(--paper);
+  border: var(--stroke-1) solid var(--line);
+  border-bottom: 0;
+  border-radius: var(--radius-0);
+}
+/* The fallback in var() matters: ::backdrop does not inherit custom properties in older Safari. */
+dialog.raw-sheet::backdrop { background: color-mix(in srgb, var(--paper, #fff) 75%, transparent); }
+
+/* Toast: a short message with at most one action, a Raw button. */
+.raw-toast {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-2);
+  font-size: 15px;
+  line-height: 22px;
+  color: var(--ink);
+  background: var(--paper);
+  border: var(--stroke-1) solid var(--ink);
+  border-radius: var(--radius-0);
+}
+
+/* Chip: a framed keyword in mono. The yellow raw-tag stays for placeholders. */
+.raw-chip, button.raw-chip {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 20px;
+  padding: 0 var(--space-1);
+  color: var(--ink-muted);
+  background: none;
+  border: var(--stroke-1) solid var(--line);
+  border-radius: var(--radius-0);
+}
+.raw-chip-accent, button.raw-chip-accent { color: var(--accent); border-color: var(--accent); }
+@media (hover: hover) {
+  button.raw-chip:hover { background: none; color: var(--ink); }
+  button.raw-chip-accent:hover { color: var(--accent); }
+}
+
+/* Selected: aria-pressed="true" fills with accent. Hover never changes a selected control. */
+button[aria-pressed="true"], .raw-button[aria-pressed="true"], .raw-bare[aria-pressed="true"],
+button[aria-pressed="true"]:hover, .raw-button[aria-pressed="true"]:hover, .raw-bare[aria-pressed="true"]:hover {
+  color: var(--on-accent);
+  background: var(--accent);
+  border-color: var(--accent);
+}
 
 /* ---------- Table ---------- */
 table { border-collapse: collapse; }

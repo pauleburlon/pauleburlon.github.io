@@ -1,0 +1,49 @@
+/* Raw — the font faces, loaded from fonts/ next to this folder. Licences: licenses.md.
+   No local("Charter") first: the Charter built into macOS and iOS is a different build, and its vertical
+   metrics (and figures) may not match these files, which carry corrected descent values. Text could then sit
+   at a different height on Apple devices than everywhere else, and the descriptors that would pin the metrics
+   (ascent-override, descent-override) are not supported in every Safari version. Browsers fetch only the
+   faces a page uses; the four Charter files together are about 60 KB. */
+
+@font-face {
+  font-family: "Charter";
+  src: url("../fonts/Charter-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Charter";
+  src: url("../fonts/Charter-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Charter";
+  src: url("../fonts/Charter-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Charter";
+  src: url("../fonts/Charter-BoldItalic.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Raw Supplement";
+  src: url("../fonts/RawSupplement-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Raw Supplement";
+  src: url("../fonts/RawSupplement-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
